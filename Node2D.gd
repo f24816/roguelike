@@ -1,17 +1,15 @@
 extends Node2D
 
+var hp = 20
 
-# Declare member variables here. Examples:
-var a = 2
-var b = "muje"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	pass
+func _on_Enemy_deal_damage():
+	hp -= 1
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
+func _on_Button_pressed():
+	hp -= 1
 
+func _process(delta):
+	print(hp)
