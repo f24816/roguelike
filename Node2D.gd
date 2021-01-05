@@ -7,7 +7,6 @@ func _ready():
 func _on_Enemy_deal_damage():
 	hp -= 1
 
-
 func _on_Button_pressed():
 	hp -= 1
 
