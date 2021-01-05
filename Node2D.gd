@@ -1,31 +1,33 @@
 extends Node2D
 
-var hp = 500
-var player_name = "Isaac"
-var power = 1
-var coins = 0
-var price = 1
 
-func _ready():
-	$Label.text = ("You %s have %d HP to start with." % [player_name, hp])
+var value = "Hello, I am genius, it works!"
+signal cardvalue(value)
+const Carte = preload("res://Carte.tscn")
+var cards = [2, 3, 4, 5, 6, 7, 8, 9, 10,"A","J","Q","K"]
+var colors = ["trefla","inima","inima neagra","romb"]
+onready var Card = get_node("Card").get_node("Label")
 
-func _on_Button_pressed():
-	if hp > 0:
-		hp -= power
-		coins += 1
-	if(hp <= 0):
-		$Label.text = ("You Died")
-	else:
-		$Label.text = ("%d HP left." % [hp])
+func _ready():	
+	$Card.connect("spawn_man", self, "_on_Card_spawn_man")
+	var i = 0
+	
+	while i < 1:
+		i += 1
+		randomize()
 		
-func _on_addpower_pressed():
-	if coins >= price:
-		power += 1
-		coins -= price
-		price += (power+5)*2
+		var card = round(rand_range(0,13))
+		var color = round(rand_range(0,3))
+		var cardvalue = card + 2
+		var hand =[]
+		
+		var GrabedInstance= Carte.instance()
+		self.add_child(GrabedInstance)
+		
+		print(cards[card])
+		print(colors[color])
+		print("Card value is", cardvalue)
+		emit_signal("cardvalue", value)
 
-func _process(delta):
-#	$Coins.text = str(coins)
-#	$Price.text = str(price)
-	$Price.text = ("Price %d" % [price])
-	$Coins.text = ("Coins %d" % [coins])
+func _on_Card_spawn_man():
+	pass
