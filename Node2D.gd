@@ -31,9 +31,6 @@ func _ready():
 		var cardsymbol = cards[card]
 		var cardvalue = card + 2
 		#################
-		#card[i] = round(rand_range(0,12))
-		#color[i] = round(rand_range(0,3))
-		
 		# Create an instance as child.
 		var GrabedInstance= Carte.instance()
 		self.add_child(GrabedInstance)
