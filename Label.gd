@@ -1,13 +1,18 @@
 extends Label
 signal data
-var i = 0
+var just_spawn = true
+var propreties = {}
 
 func _ready():
 	self.text = ("Negativ")
 	var card_data = get_tree().get_root().find_node("Node2D")
-	get_parent().get_parent().connect("cardvalue", self, "_on_Node2D_cardvalue")
-func _on_Node2D_cardvalue(value):
+	get_parent().get_parent().connect("cardvalues", self, "_on_Node2D_cardvalues")
+	
+func _on_Node2D_cardvalues(value, cardvalue, cardcolor):
 	# Channge text value only once.
-	if i == 0:
+	if just_spawn == true:
 		self.text = value
-		i = 1
+		var x = 1
+		propreties = {cardcolor: cardvalue, "none" : false}
+		print(propreties[cardcolor]) #this is how you get data from the array.
+		just_spawn = false
