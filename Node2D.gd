@@ -1,8 +1,5 @@
 extends Node2D
 
-#var card[100]
-#var color[100]
-
 var cards = [2, 3, 4, 5, 6, 7, 8, 9, 10,"A","J","Q","K"]
 var colors = ["trefla","inima","inima neagra","romb"]
 var value = "Hello, I am genius, it works!"
@@ -36,8 +33,13 @@ func _ready():
 		
 		value = ("%s de %s" % [cardsymbol, cardcolor])
 		#################
-		# Need to change name and send signal to only 1 card.s
-		# Send value just to that one who meeets requirements.
+		# May want to create unique id for cards
+		# When you execute function delta, emit signal to cards. 
+		# If criteria met, card gives Master the id of the card.
+		# Master takes id and data inside the change signal to cards.
+		# On change signal, card recieves and uses data.
+		# We can optimise code by having one big signal and changing card data base on 
+		# what data has been recieved, having less if statements with each created card.
 		#################
 		
 		# After ading instance you can conect or emit signal with values, they have to be in order at the recepient.
