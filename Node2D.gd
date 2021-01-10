@@ -20,18 +20,8 @@ func _ready():
 	
 	while i < 4:
 		i += 1
-		randomize()
-		
-		var card = round(rand_range(0,12))
-		var color = round(rand_range(0,3))
-		var cardcolor = colors[color]
-		var cardsymbol = cards[card]
-		var cardvalue = card + 2
-		# Create an instance as child.
-		var GrabedInstance= Carte.instance()
-		self.add_child(GrabedInstance)
-		
-		value = ("%s de %s" % [cardsymbol, cardcolor])
+		_create_card()
+	
 		#################
 		# May want to create unique id for cards
 		# When you execute function delta, emit signal to cards. 
@@ -41,6 +31,19 @@ func _ready():
 		# We can optimise code by having one big signal and changing card data base on 
 		# what data has been recieved, having less if statements with each created card.
 		#################
-		
-		# After ading instance you can conect or emit signal with values, they have to be in order at the recepient.
-		emit_signal("cardvalues", value ,cardvalue, cardcolor)
+
+func _create_card():
+	randomize()
+	# Make sure to randomise to get a new value.
+	var card = round(rand_range(0,12))
+	var color = round(rand_range(0,3))
+	var cardcolor = colors[color]
+	var cardsymbol = cards[card]
+	var cardvalue = card + 2
+	# Create an instance as child.
+	var GrabedInstance= Carte.instance()
+	self.add_child(GrabedInstance)
+	# Rename this variable text_value or label_text.
+	value = ("%s de %s" % [cardsymbol, cardcolor])
+	# After ading instance you can conect or emit signal with values, they have to be in order at the recepient.
+	emit_signal("cardvalues", value ,cardvalue, cardcolor)
