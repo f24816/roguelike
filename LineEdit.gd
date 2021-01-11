@@ -18,7 +18,6 @@ func _process(delta):
 		history[command_number] = user_input_text.to_lower()
 		
 		# /clear
-		print(history)
 		self.text = "" 
 		command_pos += 1
 	

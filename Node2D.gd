@@ -39,6 +39,9 @@ func _on_LineEdit_input_text(user_input_text):
 	## Here are all the commands. ##
 	if procesed_input == "add_card":
 		_create_card()
+	if procesed_input == "exit":
+		 get_tree().quit()
+	# Try to separate input in prefix and command to send diferite values to the game. ex: give 2 blue
 
 func _create_card():
 	id += 1

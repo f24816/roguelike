@@ -24,7 +24,8 @@ margin_right = 214.612
 margin_bottom = 180.306
 text = "up & down for history
 Command List:
-- add_card"
+- add_card
+- exit"
 __meta__ = {
 "_edit_use_anchors_": false
 }
