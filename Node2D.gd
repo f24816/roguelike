@@ -23,7 +23,8 @@ func _ready():
 		_create_card()
 	
 		#################
-		# May want to create unique id for cards
+		# May want to create unique id for cards.
+		# May want to account for two cards meeting requirements at once.
 		# When you execute function delta, emit signal to cards. 
 		# If criteria met, card gives Master the id of the card.
 		# Master takes id and data inside the change signal to cards.
