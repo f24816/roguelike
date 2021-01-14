@@ -22,9 +22,10 @@ func _ready():
 		i += 1
 		_create_card()
 	
-	get_node("LineEdit").connect("input_text", self, "_on_LineEdit_input_text")
+	get_node("Debug_Console").connect("input_text", self, "_on_LineEdit_input_text")
+		
 		#################
-		# May want to create unique id for cards.
+		# May want to create unique id for cards. //
 		# May want to account for two cards meeting requirements at once.
 		# When you execute function delta, emit signal to cards. 
 		# If criteria met, card gives Master the id of the card.
@@ -33,15 +34,18 @@ func _ready():
 		# We can optimise code by having one big signal and changing card data base on 
 		# what data has been recieved, having less if statements with each created card.
 		#################
+		
 func _on_LineEdit_input_text(user_input_text):
 	var procesed_input = user_input_text.to_lower()
+	var console_command = procesed_input.substr(1, procesed_input.length())
 	
 	## Here are all the commands. ##
 	if procesed_input == "add_card":
 		_create_card()
 	if procesed_input == "exit":
-		 get_tree().quit()
-	# Try to separate input in prefix and command to send diferite values to the game. ex: give 2 blue
+		get_tree().quit()
+	if procesed_input != "" and procesed_input.begins_with("/") == true:
+		print(console_command)
 
 func _create_card():
 	id += 1
